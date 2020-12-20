@@ -1,0 +1,12 @@
+
+body{
+    font-family: Tahoma, 'Segoe UI',  Verdana, sans-serif
+}
+td,th,tr{
+    position: relative;
+    border: 1px dotted black;
+}
+.content {
+    max-width: 500px;
+    margin: auto;
+  }
