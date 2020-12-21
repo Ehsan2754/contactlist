@@ -54,7 +54,7 @@ pip install gunicorn
 pip freeze > requirements.txt
 ```
 (8) for deploy servers such as 'huraku' you must create a `Procfile'
-```procfile 
+```Procfile 
 
 ```
 now u should do final commitment to the rapo and deploy!
