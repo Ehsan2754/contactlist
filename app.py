@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template,url_for,request,redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime 
 app = Flask(__name__)
@@ -6,7 +6,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///contacts.db'
 db = SQLAlchemy(app)
 class People(db.Model):
     """
-    People Table
+    People Table and corresponding class
     """
     id = db.Column(db.Integer,primary_key=True)
     firstName = db.Column(db.String(200),nullable=False)
@@ -15,17 +15,31 @@ class People(db.Model):
     email = db.Column(db.String(200),nullable=False)
     def __repr__(self):
         return '<Contact %r>' %self.id
-"""
-    after this step, run python
-    $ from app import db
-    $ db.create_all()
-    >> database created!
-"""
-@app.route('/')
+@app.route('/',methods=['POST','GET'])
 def index():
-    """
-    docstring
-    """
-    return render_template('index.html')
+    if request.method == 'POST':
+        content = request.form
+        print("\t >>> ADD PERSON : ",content)
+        person = People(firstName=content['FirstName']
+        ,lastName=content['LastName']
+        ,email=content['Email'])
+        try:
+            db.session.add(person)
+            db.session.commit()
+            return redirect('/')
+        except:
+            return 'Ooops ... 502 BAD GATEWAY'
+    else:
+         people = People.query.order_by(People.create_date).all()
+         return render_template('index.html',people = people)
+@app.route('/delete/<int:id>')
+def delete(id):
+    person2del = People.query.get_or_404(id)
+    try:
+        db.session.delete(person2del)
+        db.session.commit()
+        return redirect('/')
+    except:
+        return 'Ooops ... 502 BAD GATEWAY'
 if __name__ == "__main__":
     app.run(debug = True)
