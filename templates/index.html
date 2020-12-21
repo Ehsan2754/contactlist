@@ -6,6 +6,9 @@ Contacts
 {% block body%}
 <div class="content">
     <h1>Contacts List</h1>
+    {% if people|length < 1 %}
+    <h5> No Contacts. You can add one below</h5>
+    {% else %}
     <table>
         <tr>
             <th>ID</th>
@@ -30,6 +33,7 @@ Contacts
         </tr>
         {% endfor %}
     </table>
+    {% endif %}
     <form class="content" action="/" method="POST">
         <label>First Name : </label>
         <input type="text" name="FirstName" id="FirstName">

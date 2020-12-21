@@ -4,11 +4,12 @@ body{
     text-align: center;
 }
 td,th,tr{
-    position: relative;
-    border: 1px dotted black;
+    border: 1px solid black;
 }
 .content {
     display: inline-block;
-    max-width: 500px;
-    margin: auto;
   }
+footer>*{
+    font-size: small;
+    text-align: right;
+}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Contacts
+{% endblock %}
+
+{% block body%}
+<div class="content">
+    <h1>Update Contact</h1>
+    <form class="content" action="/update/{{person.id}}" method="POST">
+        <label>First Name : </label>
+        <input type="text" name="FirstName" id="FirstName"value="{{ person.firstName }}">
+        <br>
+        <label>Last Name : </label>
+        <input type="text" name="LastName" id="LastName" value="{{ person.lastName }}">
+        <br>
+        <label>Email Addr : </label>
+        <input type="text" name="Email" id="Email" value="{{ person.email }}">
+        <br>
+        <input type="submit" value="Update Contact">
+
+    </form>
+</div>
+{% endblock %}

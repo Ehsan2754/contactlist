@@ -46,3 +46,15 @@ class People(db.Model):
     >> database created!
 """
 ```
+(7) Deployment: 
+install gunicorn 
+```bash
+pip install gunicorn
+# freeze requirements and save 'em
+pip freeze > requirements.txt
+```
+(8) for deploy servers such as 'huraku' you must create a `Procfile'
+```procfile 
+
+```
+now u should do final commitment to the rapo and deploy!
