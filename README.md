@@ -55,6 +55,10 @@ pip freeze > requirements.txt
 ```
 (8) for deploy servers such as 'huraku' you must create a `Procfile'
 ```Procfile 
-
+web: gunicorn app:<app file>
 ```
 now u should do final commitment to the rapo and deploy!
+and then :
+```
+heroku create <app name>
+```
